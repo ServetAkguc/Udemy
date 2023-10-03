@@ -1,43 +1,40 @@
 package crackJavaCoding;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class FindCommonCharactersInTwoStringLIST {
 
 	public static void main(String[] args) {
-        String str1 = "abcdef";
-        String str2 = "acdfgh";
+		String str1 = "abcdef";
+		String str2 = "accdfgh";
 
-        Set<Character> commonChars = findCommonCharacters(str1, str2);
+		List<Character> result = findCommonCharacters(str1, str2);
 
-        System.out.println("Common characters: " + commonChars);
-    }
+		System.out.println("Common characters: " + result);
+	}
 
-    public static Set<Character> findCommonCharacters(String str1, String str2) {
-        Set<Character> commonChars = new HashSet<>();
+	public static List<Character> findCommonCharacters(String str1, String str2) {
+		List<Character> commonChars = new ArrayList<>();
 
-        // Create sets to store the characters of both strings
-        Set<Character> set1 = new HashSet<>();
-        Set<Character> set2 = new HashSet<>();
-
-        // Add characters from the first string to set1
-        for (char c : str1.toCharArray()) {
-            set1.add(c);
-        }
-
-        // Add characters from the second string to set2
-        for (char c : str2.toCharArray()) {
-            set2.add(c);
-        }
-
-        // Iterate through set1 and check if each character exists in set2
-        for (char c : set1) {
-            if (set2.contains(c)) {
-                commonChars.add(c);
-            }
-        }
-
-        return commonChars;
-    }
+		//Create an array to keep track of character occurences in str2
+		boolean[]charInStr2 = new boolean[256];//Assuming ASCII characters
+		
+		//Mark characters from str2 in the array
+		for (char c: str2.toCharArray()) {
+			charInStr2[c] =true;
+		}
+		//Check characters in str1 against the array
+		for (char c :str1.toCharArray()) {
+			if(charInStr2[c]) {
+				commonChars.add(c);
+				charInStr2[c] = false; // to avoid duplicates 
+			}
+		}
+		
+		
+		return commonChars;
+	}
 }
