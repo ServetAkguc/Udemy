@@ -12,8 +12,8 @@ public class SetGet {
 		System.out.println(personInfo.getPersonInfo());
 		System.out.println(personInfo.job);
 	}
-
-public static class Person {
+}
+class Person {
 		public String name;// = "John Doe";
 		public String job;// = "Software Developer";
 		public int schoolId;// = 12345;
@@ -38,4 +38,4 @@ public static class Person {
 			return info;
 		}
 	}
-}
+
