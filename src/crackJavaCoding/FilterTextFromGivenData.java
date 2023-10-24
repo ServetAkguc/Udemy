@@ -3,26 +3,26 @@ package crackJavaCoding;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FilterNumberFromGivenData {
+public class FilterTextFromGivenData {
 	public static void main(String[]args) {
 		
 		ArrayList<String> list =new ArrayList<>();//readInput();
-		list.add("12as");
+		list.add("12rana%$3");
 		list.add("23ok");
-		list.add("3");
-		list.add("");
-		list.add("13");
+		list.add("3eggs");
+		list.add("85berrrr");
+		list.add("125serrr");
 		System.out.println("LIst from Read inputs :: "+list);
 		
-		ArrayList <Integer> numbers = filterNumbers(list);
+		ArrayList <String> numbers = filterText(list);
 		System.out.println("Numbers are :::: "+numbers);
 		
 	}
-	static ArrayList<Integer>filterNumbers(ArrayList<String> list){
+	static ArrayList<String>filterText(ArrayList<String> list){
 		
 		if(list.isEmpty()) return null;//odd case
 		
-		ArrayList<Integer> nums = new ArrayList<>();
+		ArrayList<String> strings = new ArrayList<>();
 		
 		for(int i =0; i<list.size();i++) {
 			String data = list.get(i);
@@ -34,13 +34,13 @@ public class FilterNumberFromGivenData {
 //			}
 			
 			//regex solution
-			String number = data.replaceAll("[^0-9]", "");
-			System.out.println("Regex solution is :: "+number);
+			String str = data.replaceAll("[^a-zA-Z]", "");
+			System.out.println("Regex solution is :: "+str);
 			
 			//handle Number Format Exception
-			if (!number.equals(null)) {
+			if (!str.equals(null)) {
 				try {
-					nums.add(Integer.parseInt(number));
+					strings.add(str);
 					
 				}catch (NumberFormatException nfe) {
 					
@@ -48,7 +48,7 @@ public class FilterNumberFromGivenData {
 			}
 		}
 		
-		return nums;
+		return strings;
 	}
 	
 	static ArrayList<String> readInput(){
